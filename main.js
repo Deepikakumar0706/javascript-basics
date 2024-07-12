@@ -63,3 +63,53 @@ function flattenInnerArray(innerArray) {
     }
   }
 }
+//2nd set sums
+function sumsOfAllNumbers() {
+  const numArray = [1, 2, 3, 4, 5, 6];
+  let sum = 0;
+  for (let i = 0; i < numArray.length; i++) {
+    sum = sum + numArray[i];
+  }
+  console.log(sum);
+}
+
+function reversedString() {
+  const word = "I am traveling to my native";
+  const wordString = word.split(" ").reverse().join(" ");
+  console.log(wordString);
+}
+
+function findMaxNum() {
+  const number = [9, 10, 99, 45, 92, 56];
+  const maxNumber = Math.max(...number);
+  console.log(maxNumber);
+}
+
+function sumAllValues() {
+  const obj = { a: 1, b: 2, c: 3 };
+  let sums = 0;
+  for (x in obj) {
+    sums = sums + obj[x];
+  }
+  console.log(sums);
+}
+
+function removeDuplicates() {
+  let array = [1, 2, 2, 3, 4, 55, 6, 6, 7, 7, 7, 55, 8];
+  let uniqueArray = [];
+  for (let i = 0; i < array.length; i++) {
+    if (uniqueArray.indexOf(array[i]) === -1) {
+      uniqueArray.push(array[i]);
+    }
+  }
+  console.log(uniqueArray);
+}
+function checkDate() {
+  let date1 = "09/12/2024";
+  let date2 = "07/12/2024";
+  if (date1 === date2) {
+    console.log("date are equal");
+  } else {
+    console.log("date are not equal");
+  }
+}
