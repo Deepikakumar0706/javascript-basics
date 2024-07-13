@@ -1,23 +1,50 @@
 function checkPalindrome() {
-  const stringName = "racecar";
-  const revStr = stringName.split("").reverse().join("");
-  console.log(revStr);
-  for (let i = 0; i < stringName.length; i++) {
-    if (revStr[i] === stringName[i]) {
-      console.log("The given string is palindrome ");
-    } else {
-      console.log("The given string is not palindrome");
+  console.log("Is palindrome - " + validatePalindrome("ratr"));
+  console.log("Is palindrome - " + validatePalindrome("malayalam"));
+  console.log("Is palindrome - " + validatePalindrome("abcd"));
+  console.log("Is palindrome - " + validatePalindrome("ab c d dff dd"));
+  console.log("Is palindrome - " + validatePalindrome("Malayalam"));
+}
+
+function validatePalindrome(inputString) {
+  // return (
+  //   inputString.trim().toLowerCase() ===
+  //   inputString.trim().toLowerCase().split("").reverse().join("")
+  // );
+  const updatedInput = inputString.trim().toLowerCase();
+  const reversedInput = updatedInput
+    .trim()
+    .toLowerCase()
+    .split("")
+    .reverse()
+    .join("");
+
+  for (let i = 0; i < updatedInput.length; i++) {
+    if (reversedInput[i] !== updatedInput[i]) {
+      return false;
     }
   }
+  return true;
 }
 
 function reverseString() {
-  const string = "Hello";
-  let strRev = "";
-  for (let i = string.length - 1; i >= 0; i--) {
-    strRev += string[i];
+  console.log(reverseInputString("Hello"));
+  console.log(reverseInputString("Hello Test"));
+}
+
+function reverseInputString(inputString) {
+  let reverseOutput = "";
+  for (let count = inputString.length - 1; count >= 0; count--) {
+    reverseOutput += inputString[count];
   }
-  console.log(strRev);
+  return convertToTitleCase(reverseOutput);
+}
+
+function convertToTitleCase(input) {
+  return input
+    .split(" ")
+    .map((w) => w[0].toUpperCase() + w.substring(1).toLowerCase())
+    .join(" ");
 }
 
 function evenNumbers() {
@@ -30,14 +57,14 @@ function evenNumbers() {
 }
 
 function titleCase() {
-  const letter = "new delhi is capital of india";
-  const words = letter.split(" ");
-  console.log(words);
-  for (let i = 0; i < words.length; i++) {
-    words[i] =
-      words[i].charAt(0).toUpperCase() + words[i].slice(1).toLowerCase();
-  }
-  console.log(words.join(" "));
+  const inputToBeValidated = "new delhi is capital of india";
+  // const words = letter.split(" ");
+  // for (let i = 0; i < words.length; i++) {
+  //   words[i] =
+  //     words[i].charAt(0).toUpperCase() + words[i].slice(1).toLowerCase();
+  // }
+  //  console.log(words.join(" "));
+  console.log(convertToTitleCase(inputToBeValidated));
 }
 
 function findFactorial() {
@@ -48,12 +75,30 @@ function findFactorial() {
 function factorial(num) {
   return num > 1 ? num * factorial(num - 1) : num;
 }
+
+function isPrime(input) {
+  for (count = 2; count < input / 2; count++) {
+    if (input % count === 0) {
+      return false;
+    }
+  }
+  return true;
+}
+
+function validatePrimeNo() {
+  console.log(isPrime(6));
+  console.log(isPrime(7));
+  console.log(isPrime(333333));
+}
+
 const outputArray = [];
 function flatArray() {
   const sampleArray = [1, 2, [2, 3, 6, [4, 5, [5, 5, 6, 6, 6]]]];
+
   flattenInnerArray(sampleArray);
   console.log(outputArray);
 }
+
 function flattenInnerArray(innerArray) {
   for (let count = 0; count < innerArray.length; count++) {
     if (typeof innerArray[count] === "number") {
@@ -63,14 +108,21 @@ function flattenInnerArray(innerArray) {
     }
   }
 }
+
 //2nd set sums
-function sumsOfAllNumbers() {
-  const numArray = [1, 2, 3, 4, 5, 6];
+function sumsOfAllNumbers(numberArray) {
   let sum = 0;
-  for (let i = 0; i < numArray.length; i++) {
-    sum = sum + numArray[i];
+  for (let i = 0; i < numberArray.length; i++) {
+    if (typeof numberArray[i] === "number") {
+      sum = sum + numberArray[i];
+    }
   }
-  console.log(sum);
+  return sum;
+}
+
+function printSum() {
+  console.log(sumsOfAllNumbers([1, 2, 3, 4, 5, 6]));
+  console.log(sumsOfAllNumbers([1, 2, "g", "h", 5, 6]));
 }
 
 function reversedString() {
@@ -104,12 +156,18 @@ function removeDuplicates() {
   }
   console.log(uniqueArray);
 }
+
 function checkDate() {
-  let date1 = "09/12/2024";
-  let date2 = "07/12/2024";
-  if (date1 === date2) {
-    console.log("date are equal");
-  } else {
-    console.log("date are not equal");
-  }
+  //  console.log(compareDate("09/12/2024", "09/12/2024"));
+  console.log(compareDate("2015-03-25", "03/25/2015"));
+}
+
+function compareDate(date1, date2) {
+  const dateOne = new Date(date1);
+  const dateTwo = new Date(date2);
+  return dateOne.getDate() === dateTwo.getDate() &&
+    dateOne.getDay() === dateTwo.getDay() &&
+    dateOne.getFullYear() === dateTwo.getFullYear()
+    ? "Dates are equal"
+    : "Dates are not equal";
 }
